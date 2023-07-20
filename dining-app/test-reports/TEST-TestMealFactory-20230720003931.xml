@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<testsuite name="TestMealFactory-20230720003931" tests="5" time="0.000" failures="0" errors="0">
+	<testcase classname="TestMealFactory" name="test_create_chef_specials" time="0.000"/>
+	<testcase classname="TestMealFactory" name="test_create_chinese_meal" time="0.000"/>
+	<testcase classname="TestMealFactory" name="test_create_invalid_meal_type" time="0.000"/>
+	<testcase classname="TestMealFactory" name="test_create_italian_meal" time="0.000"/>
+	<testcase classname="TestMealFactory" name="test_create_pastries_meal" time="0.000"/>
+	<system-out><![CDATA[]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>
