@@ -43,4 +43,3 @@ class Menu:
 
             selected_meals.append((meal_id, quantity))
         return selected_meals
-

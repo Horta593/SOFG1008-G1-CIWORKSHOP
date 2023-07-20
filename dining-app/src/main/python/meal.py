@@ -14,21 +14,19 @@ class ChineseMeal(Meal):
     def __init__(self, name, price):
         super().__init__(name, price, "Chinese")
 
-
 class ItalianMeal(Meal):
     def __init__(self, name, price):
         super().__init__(name, price, "Italian")
-
 
 class PastriesMeal(Meal):
     def __init__(self, name, price):
         super().__init__(name, price, "Pastries")
 
 
+
 class ChefSpecials(Meal):
     def __init__(self, name, price):
         super().__init__(name, price, "ChefSpecials")
-
 
 class MealFactory:
     @staticmethod
