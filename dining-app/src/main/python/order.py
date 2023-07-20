@@ -1,4 +1,5 @@
 from meal import Meal 
+from exceptions import InvalidConfirmationError
 
 class Order:
     def __init__(self):
@@ -34,10 +35,15 @@ class Order:
 
     def confirm_order(self):
         while True:
-            confirmation = input("Confirm your order (y/n): ")
-            if confirmation.lower() == "y":
-                return True
-            elif confirmation.lower() == "n":
-                return False
-            else:
-                raise InvalidConfirmationError()
+            try: 
+                confirmation = input("Confirm your order (y/n): ")
+                if confirmation.lower() == "y":
+                    return True
+                elif confirmation.lower() == "n":
+                    return False
+                else:
+                    raise InvalidConfirmationError()
+                
+            except InvalidConfirmationError as confirmation_error:
+                print(confirmation_error)
+                continue

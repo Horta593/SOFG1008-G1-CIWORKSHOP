@@ -1,5 +1,5 @@
 
-from meal import MealFactory, ItalianMeal, ChineseMeal, ChefSpecials, PastriesMeal
+from meal import MealFactory
 from exceptions import InvalidQuantityError, InvalidMealError, InvalidConfirmationError
 from order import Order
 from quantity_validator import QuantityValidator
@@ -27,19 +27,24 @@ class Menu:
             meal_id = input("Enter the meal ID to select (or 'q' to quit): ")
             if meal_id == 'q':
                 break
-            meal_id = int(meal_id)
-            if meal_id not in self.available_meals:
-                print("Invalid meal ID. Please try again.")
-                continue
-
-            quantity = input("Enter the quantity: ")
             try:
+                meal_id = int(meal_id)
+                if meal_id not in self.available_meals:
+                    raise InvalidMealError()
+                quantity = input("Enter the quantity: ")
                 if not QuantityValidator.is_valid_quantity(quantity):
                     raise InvalidQuantityError()
                 quantity = int(quantity)
-            except InvalidQuantityError:
-                print("Invalid quantity. Please enter a valid positive integer between 1 and 100.")
+            except InvalidQuantityError as invalid_quantity:
+                print(invalid_quantity)
                 continue
-
+            except InvalidMealError as invalid_meal:
+                print(invalid_meal)
+                continue
+            except ValueError as value_error:
+                print(value_error)
+                continue
+            except InvalidConfirmationError as confirmation_error:
+                print(confirmation_error)
             selected_meals.append((meal_id, quantity))
         return selected_meals
