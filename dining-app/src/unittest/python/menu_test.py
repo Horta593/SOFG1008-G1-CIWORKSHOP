@@ -1,3 +1,5 @@
+import sys 
+sys.path.append('src/main/python/restaurant')
 import unittest
 from unittest.mock import patch, MagicMock
 from src.main.python.menu import Menu
@@ -16,7 +18,7 @@ class TestMenu(unittest.TestCase):
         }
         self.menu.available_meals = set(self.menu.meals.keys()) 
 
-        return "Meal value error."
+        return "Meal value"
 
     @patch('builtins.print')
     def test_display_menu(self, mock_print):
