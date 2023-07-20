@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<testsuite name="TestChefSpecials-20230720003931" tests="1" time="0.000" failures="0" errors="0">
+	<testcase classname="TestChefSpecials" name="test_chef_specials_init" time="0.000"/>
+	<system-out><![CDATA[]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>
