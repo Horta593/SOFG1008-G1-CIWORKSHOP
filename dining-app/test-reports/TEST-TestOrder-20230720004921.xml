@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<testsuite name="TestOrder-20230720004921" tests="8" time="0.001" failures="0" errors="0">
+	<testcase classname="TestOrder" name="test_add_meal" time="0.000"/>
+	<testcase classname="TestOrder" name="test_confirm_order" time="0.000"/>
+	<testcase classname="TestOrder" name="test_confirm_order_negative" time="0.000"/>
+	<testcase classname="TestOrder" name="test_get_total_cost" time="0.000"/>
+	<testcase classname="TestOrder" name="test_get_total_cost_quantity_discount_10" time="0.000"/>
+	<testcase classname="TestOrder" name="test_get_total_cost_quantity_discount_5" time="0.000"/>
+	<testcase classname="TestOrder" name="test_get_total_cost_special_offer_discount_100" time="0.000"/>
+	<testcase classname="TestOrder" name="test_get_total_cost_special_offer_discount_50" time="0.000"/>
+	<system-out><![CDATA[]]></system-out>
+	<system-err><![CDATA[]]></system-err>
+</testsuite>
