@@ -1,7 +1,7 @@
 class Meal:
     def __init__(self, name, price, category):
         self.name = name
-        self.price = price
+        self.price = price or 5.00
         self.category = category
 
     def __str__(self):
