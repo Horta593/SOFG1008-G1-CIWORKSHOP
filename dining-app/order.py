@@ -1,5 +1,5 @@
 from meal import Meal 
-from exceptions import InvalidConfirmationError
+from exceptions import InvalidConfirmationError, InvalidQuantityError
 
 class Order:
     def __init__(self):
