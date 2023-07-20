@@ -16,7 +16,6 @@ class TestMeal(unittest.TestCase):
 
     def test_meal_is_special(self):
         special_meal = ChefSpecials("Special Meal", 25.00)
-        normal_meal = ItalianMeal("Normal Meal", 12.00)
         self.assertTrue(special_meal.category == "ChefSpecials")
     
     def test_meal_is_not_special(self):
