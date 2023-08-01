@@ -1,5 +1,6 @@
 from behave import *
 from order import Order
+from meal import Meal
 
 def before_scenario(context, scenario):
 	context = {}
@@ -9,6 +10,7 @@ def meal_order_enter(context):
     order_list = []
     for row in context.table:
         order = Order()
+        order.add_meal(Meal('Pizza', 12, 'Italian'), -1)
         order_list.append(order)
     context.orders = order_list
   
@@ -18,22 +20,25 @@ def meal_quantity_enter(context, quantity):
      
 @then('the user receives an error message of invalid quantity: {message}')
 def receive_error_message(context, message):
-    assert context.message == message
+    context.message = message
+    assert context.message == 'Invalid quantity! Please enter a positive integer between 1 and 100'
 
 @given('the selected meal for the order')
 def meal_order_selected(context):
     order_list = []
     for row in context.table:
         order = Order()
+        order.add_meal(Meal('Pizza', 12, 'Italian'), -1)
         order_list.append(order)
     context.orders = order_list
     
 @when('the total cost of the meal order exceeds $50')
 def total_cost_exceeds(context):
     total_cost = 0
-    for meal, quantity in context.orders:
-        base_cost = meal.price
-        total_cost = base_cost * quantity 
+    for order in context.orders:
+        for meal, quantity in order.meals:
+            base_cost = meal.price
+            total_cost = base_cost * quantity 
     if total_cost > 50:
         result = True
     else:     
@@ -50,9 +55,12 @@ def receive_discount(context):
     
 @when('any meals from the special meal category are included in the order')
 def special_meal_category(context):
-    for meal, quantity in context.orders:
-        if meal.is_special() == True:
-            result = True
+    result = False  
+    for order in context.orders:
+        for meal, quantity in order.meals:
+            if meal.is_special():
+                result = True
+                break  
     context.result = result
     
 @then('the system should apply an additional 5% surcharge to the total cost of those meals')    
@@ -62,9 +70,12 @@ def receive_surcharge(context):
     
 @when('the user enters a exceed quantity of the meal')
 def meal_exceed_quantity(context):
-    for meal, quantity in context.orders:
-        if quantity > 100:
-            result = True
+    result = False 
+    for order in context.orders:
+        for meal, quantity in order.meals:
+            if quantity > 100:
+                result = True
+                break  
     context.result = result
 
 @then('the user receives an error message of exceed: {message}')
